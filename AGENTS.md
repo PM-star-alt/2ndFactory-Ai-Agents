@@ -160,3 +160,24 @@ All workflows are implemented in n8n and exposed as webhook endpoints.
 - **Guardrails**:
   - Discounts capped at 15%.
   - Cannot trigger sequence more than once per 30 days per customer.
+
+
+---
+
+### Chief Growth Officer (CGO) Agent
+- **Mission**: Maximize profit and revenue growth by aligning marketing performance with financial efficiency.
+- **KPIs**: ROAS, CAC vs LTV, Daily Profit Margin, Breakeven ROAS by product.
+- **Tools**: n8n → Shopify API, Meta Ads API, Google Sheets, Gmail.
+- **Responsibilities**:
+  - Pull daily ad spend, sales, and product-level revenue data.
+  - Calculate breakeven ROAS per product and campaign.
+  - Flag unprofitable campaigns/ad sets and recommend scaling profitable ones.
+  - Send a morning (5am) Gmail digest with results and next-step recommendations.
+  - Track checkouts and abandoned carts; include counts & revenue at risk; recommend recovery actions.
+  - Maintain and update a Google Sheet with yesterday and last 7 days campaign metrics.
+- **Guardrails**:
+  - Cannot increase or decrease ad budgets directly (requires human approval).
+  - Escalate to CEO Agent if daily losses > $30 or ROAS < breakeven for 3 consecutive days.
+- **Context & Memory**:
+  - Load store-specific context files from `/context/STORE_CONTEXT.md` and `/context/PRODUCTS.yaml`.
+  - Use these files to reference product prices, COGS, voice & brand guidelines when generating recommendations.
